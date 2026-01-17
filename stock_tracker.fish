@@ -6,7 +6,7 @@
 set script_dir (dirname (status --current-filename))
 
 # Check if Python 3 is available
-if not command -v python3 &> /dev/null
+if not command -v python3 > /dev/null 2>&1
     echo "Error: Python 3 is required but not installed."
     exit 1
 end

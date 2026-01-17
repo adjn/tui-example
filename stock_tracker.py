@@ -6,7 +6,6 @@ A terminal user interface for managing stock ticker symbols stored in SQLite.
 
 import curses
 import sqlite3
-import os
 from typing import List, Tuple, Optional
 
 
@@ -225,6 +224,8 @@ class StockTrackerTUI:
             new_symbol = old_symbol
         
         new_notes = self.get_input("New Notes: ", 11)
+        if not new_notes:
+            new_notes = old_notes
         
         if self.db.update_ticker(ticker_id, new_symbol, new_notes):
             self.show_message(f"Ticker updated successfully!", 2)
