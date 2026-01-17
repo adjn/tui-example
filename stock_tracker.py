@@ -4,9 +4,12 @@ Stock Ticker TUI Application
 A terminal user interface for managing stock ticker symbols stored in SQLite.
 """
 
+import argparse
 import curses
 import sqlite3
 from typing import List, Tuple, Optional
+
+VERSION = "1.0.0"
 
 
 class StockDatabase:
@@ -295,5 +298,22 @@ def main(stdscr):
     app.run()
 
 
+def parse_args() -> argparse.Namespace:
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        prog="stock_tracker",
+        description="Stock Ticker TUI Application - A terminal user interface for managing stock ticker symbols stored in SQLite.",
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "-v", "--version",
+        action="version",
+        version=f"%(prog)s {VERSION}",
+        help="Show the version number and exit"
+    )
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
+    parse_args()
     curses.wrapper(main)
