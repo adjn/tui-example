@@ -91,7 +91,7 @@ The Python application has two main classes:
    - Menu navigation with arrow keys
    - CRUD operations through interactive prompts
 
-Entry point: `main(stdscr)` function wrapped with `curses.wrapper()`
+Entry point: `main(stdscr)` function (line 292) wrapped with `curses.wrapper()`
 
 ### Shell Launcher Scripts
 
